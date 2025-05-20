@@ -88,8 +88,8 @@ public class AskMarie : MonoBehaviour
 
     string ExtractAudioPath(string json)
     {
-        int startIndex = json.IndexOf("audio_path":"") + 13;
-        int endIndex = json.IndexOf(""", startIndex);
+        int startIndex = json.IndexOf("audio_path\":\"") + 13;
+        int endIndex = json.IndexOf("\"", startIndex);
         return json.Substring(startIndex, endIndex - startIndex);
     }
 
