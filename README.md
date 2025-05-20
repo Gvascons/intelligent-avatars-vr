@@ -116,6 +116,7 @@ With `AvatarAssistant` selected:
 #### AskMarie:
 
 - `Audio Source`: assign the same AudioSource
+- `Server Url` → write http://localhost:5000/speech-to-text-and-respond
 
 > ⚠️ `recordAction` is now **automatically bound to R** in code — no need to assign Input Actions manually.
 
@@ -131,7 +132,8 @@ Create and activate a virtual environment (i'd recommend *uv*), then run:
 pip install -r requirements.txt
 ```
 
-> Includes: `flask`, `pyttsx3`, `whisper`, `soundfile` and `numpy`
+> Includes: `flask`, `pyttsx3`, `soundfile` and `numpy`
+> You must install `whisper` via git package (e.g. pip install git+https://github.com/openai/whisper.git)
 > In order to install torch and ffmeg, refer to the end of this document.
 
 Make sure [ffmpeg](https://ffmpeg.org/download.html) is installed and available in your system `PATH`.
@@ -214,6 +216,12 @@ Then confirm it's available:
 
 ```bash
 ffmpeg -version
+```
+
+You can also install in your venv via (on Windows) via:
+
+```bash
+winget install ffmpeg
 ```
 
 #### ✅ Option B: Manual Installation
