@@ -125,13 +125,14 @@ With `AvatarAssistant` selected:
 
 ### 1. Python Requirements
 
-Create and activate a virtual environment, then run:
+Create and activate a virtual environment (i'd recommend *uv*), then run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> Includes: `flask`, `pyttsx3`, `whisper`, `soundfile`, `torch`, `torchaudio`, and `numpy`
+> Includes: `flask`, `pyttsx3`, `whisper`, `soundfile` and `numpy`
+> In order to install torch and ffmeg, refer to the end of this document.
 
 Make sure [ffmpeg](https://ffmpeg.org/download.html) is installed and available in your system `PATH`.
 
