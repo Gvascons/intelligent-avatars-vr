@@ -10,7 +10,7 @@ A project for developing intelligent avatars for use in virtual reality environm
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/MEBM1/intelligent_avatars_vr.git
+git clone https://github.com/Gvascons/intelligent-avatars-vr
 ```
 
 ### 2. Open the project in Unity
