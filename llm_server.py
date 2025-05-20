@@ -58,7 +58,7 @@ def speech_to_text_and_respond():
 
     # Transcrição com Whisper
     try:
-        result = whisper_model.transcribe(audio_path_input)
+        result = whisper_model.transcribe(audio_path_input, language="pt")
         user_text = result['text']
         print("Usuário disse:", user_text)
     except Exception as e:
