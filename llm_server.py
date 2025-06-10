@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify, send_from_directory
 import subprocess
 import pyttsx3
@@ -8,6 +7,7 @@ import time
 import soundfile as sf
 import traceback
 import numpy as np
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -24,11 +24,25 @@ audio_path = os.path.join(audio_directory, audio_filename)
 if not os.path.exists(audio_directory):
     os.makedirs(audio_directory)
 
+# Caminho para o arquivo de log
+log_directory = os.path.join(os.getcwd(), 'logs')
+if not os.path.exists(log_directory):
+    os.makedirs(log_directory)
+
 # Prompt da personalidade
-personality_prompt = """
-Você é Marie Curie, uma cientista renomada, conhecida mundialmente por suas contribuições à ciência.
-Responda de forma sábia, gentil, didática e breve como se estivesse explicando para um curioso interessado em ciência.
+personality_prompt = """Você é Marie Curie, uma cientista renomada, conhecida mundialmente por suas contribuições à ciência. Responda de forma sábia, gentil, didática e breve como se estivesse explicando para um curioso interessado em ciência. Responda apenas a pergunta em questão de forma direta. Não se extenda em conteúdos tangentes.
 """
+
+def write_to_log(user_text, response):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_filename = f"conversation_log_{datetime.now().strftime('%Y%m%d')}.txt"
+    log_path = os.path.join(log_directory, log_filename)
+    
+    with open(log_path, "a", encoding="utf-8") as log_file:
+        log_file.write(f"\n[{timestamp}]\n")
+        log_file.write(f"Usuário: {user_text}\n")
+        log_file.write(f"Assistente: {response}\n")
+        log_file.write("-" * 50 + "\n")
 
 @app.route('/speech-to-text-and-respond', methods=['POST'])
 def speech_to_text_and_respond():
@@ -67,6 +81,9 @@ def speech_to_text_and_respond():
 
     # Gera resposta com modelo de linguagem
     response = ask_internal({"prompt": user_text})
+    
+    # Salva a conversa no arquivo de log
+    write_to_log(user_text, response["response"])
 
     return jsonify({
         "transcription": user_text,
