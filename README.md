@@ -3,6 +3,7 @@
 This is the official repository for **Avataredu**, an open-source framework for creating intelligent, historically themed avatars in virtual reality (VR) environments, as presented in our paper.
 
 Contributors: João Gabriel Vasconcelos, Maria Eduarda Mota, Glenda Malta, Cleber Zanchettin, Germano Vasconcelos, Francisco Simões
+
 Avataredu features an end-to-end architecture that combines on-device AI inference with the **Ubiq** multiplayer VR stack. Our prototype instantiates an Avatar powered by a local Large Language Model (LLM) served via **Ollama**, **Whisper** speech-to-text, and a lightweight text-to-speech (TTS) engine, running entirely on commodity hardware. To validate its applicability, we conducted a quantitative cross-persona analysis using avatars such as **Marie Curie**, **Malala Yousafzai**, and **Martin Luther King Jr**, which revealed low error rates (mean of ~9.3%) and demonstrated that persona swap requires minimal additional computational power while maintaining answer quality.
 
 This repository contains:
